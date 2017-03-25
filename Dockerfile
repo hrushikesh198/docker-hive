@@ -1,4 +1,4 @@
-FROM sequenceiq/hadoop-docker
+FROM sequenceiq/hadoop-docker:2.7.1
 
 #https://github.com/hrushikesh198/docker-hive
 ENV HIVE_VERSION=1.2.1
@@ -8,7 +8,7 @@ RUN curl -O http://apache.claz.org/hive/hive-${HIVE_VERSION}/apache-hive-${HIVE_
 	mv apache-hive-${HIVE_VERSION}-bin $HIVE_HOME &&\
 	rm -f apache-hive-${HIVE_VERSION}-bin.tar.gz
 ENV PATH=$HIVE_HOME/bin:$HADOOP_HDFS_HOME/bin:$PATH
-VOLUME /tmp/hhadoop-root
+VOLUME /tmp/hadoop-root
 #RUN schematool -dbType derby -initSchema
 ENV PS1='[\D{%m/%d %H:%M} \u@\h \w]$ '
 ADD entry.sh /
